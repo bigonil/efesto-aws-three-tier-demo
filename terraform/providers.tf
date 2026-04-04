@@ -21,8 +21,10 @@ terraform {
 }
 
 provider "aws" {
+  # region viene da var.aws_region; le credenziali arrivano come env vars
+  # AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY impostate nel workspace HCP.
+  # Il profile locale (lb-aws-admin) è usato solo in esecuzione locale.
   region  = var.aws_region
-  profile = var.aws_profile
 
   default_tags {
     tags = {
