@@ -4,7 +4,7 @@ terraform {
   cloud {
     organization = "LB-GlobexInfraOps"
     workspaces {
-      name = "efest-aws-dev"
+      name = "efesto-aws-dev"
     }
   }
 
