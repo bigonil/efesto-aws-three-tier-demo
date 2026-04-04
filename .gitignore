@@ -1,0 +1,38 @@
+# Terraform state
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+credentials.tfrc.json
+
+# Terraform variable files (keep example, ignore real values)
+terraform/*.tfvars
+!terraform/terraform.tfvars.example
+
+# Node.js
+app/backend/node_modules/
+app/backend/.env
+npm-debug.log*
+yarn-error.log*
+
+# Build artifacts
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user

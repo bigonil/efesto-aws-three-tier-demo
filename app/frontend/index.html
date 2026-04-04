@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager · AWS Three-Tier Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <div class="logo">📋 Task Manager</div>
+      <div class="badges">
+        <span class="badge aws">AWS</span>
+        <span class="badge tier">3-Tier Demo</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Architecture info banner -->
+    <div class="arch-banner">
+      <div class="arch-item">
+        <span class="arch-icon">🌐</span>
+        <div>
+          <strong>Frontend</strong>
+          <small>S3 + CloudFront</small>
+        </div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-item">
+        <span class="arch-icon">⚙️</span>
+        <div>
+          <strong>Backend</strong>
+          <small>ECS Fargate (Node.js)</small>
+        </div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-item">
+        <span class="arch-icon">🗄️</span>
+        <div>
+          <strong>Database</strong>
+          <small>RDS PostgreSQL</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add task form -->
+    <section class="card">
+      <h2>Add Task</h2>
+      <form id="taskForm">
+        <input id="taskTitle" type="text" placeholder="Task title…" maxlength="255" required autocomplete="off">
+        <textarea id="taskDesc" placeholder="Description (optional)…" rows="2" maxlength="500"></textarea>
+        <button type="submit" id="submitBtn">
+          <span>+ Add Task</span>
+          <span id="submitSpinner" class="spinner hidden"></span>
+        </button>
+      </form>
+      <div id="formError" class="alert alert-error hidden"></div>
+    </section>
+
+    <!-- Task list -->
+    <section class="card">
+      <div class="tasks-header">
+        <h2>Tasks</h2>
+        <div class="task-stats">
+          <span id="pendingCount" class="stat-badge pending">0 pending</span>
+          <span id="doneCount" class="stat-badge done">0 done</span>
+        </div>
+      </div>
+      <div id="globalError" class="alert alert-error hidden"></div>
+      <div id="loadingState" class="empty-state">
+        <div class="spinner"></div>
+        <p>Loading tasks…</p>
+      </div>
+      <ul id="taskList" class="hidden"></ul>
+      <div id="emptyState" class="empty-state hidden">
+        <span>📭</span>
+        <p>No tasks yet. Add your first task above!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>
+        AWS Three-Tier Architecture · Frontend: S3 + CloudFront · Backend: ECS Fargate · DB: RDS PostgreSQL
+        · <a href="/api/info" target="_blank">API Info</a>
+        · <a href="/health" target="_blank">Health Check</a>
+      </small>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

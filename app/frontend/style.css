@@ -1,0 +1,204 @@
+/* ── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.container { max-width: 760px; margin: 0 auto; padding: 0 1rem; }
+main { flex: 1; padding: 1.5rem 0 2rem; }
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, #232f3e 0%, #37475a 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.header-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.logo { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.3px; }
+.badges { display: flex; gap: .4rem; }
+.badge { padding: .2rem .6rem; border-radius: 12px; font-size: .7rem; font-weight: 600; }
+.badge.aws { background: #ff9900; color: #000; }
+.badge.tier { background: rgba(255,255,255,0.15); color: white; }
+
+/* ── Architecture banner ──────────────────────────────────────────────────── */
+.arch-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.arch-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; }
+.arch-item .arch-icon { font-size: 1.4rem; }
+.arch-item strong { display: block; font-size: .85rem; }
+.arch-item small { color: #718096; font-size: .72rem; }
+.arch-arrow { color: #a0aec0; font-size: 1.1rem; }
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border: 1px solid #e2e8f0;
+}
+
+.card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: #2d3748; }
+
+/* ── Form ─────────────────────────────────────────────────────────────────── */
+form { display: flex; flex-direction: column; gap: .6rem; }
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: .55rem .85rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 7px;
+  font-size: .93rem;
+  font-family: inherit;
+  transition: border-color .15s;
+  resize: vertical;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66,153,225,0.15);
+}
+
+button[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  background: #ff9900;
+  color: #111;
+  border: none;
+  padding: .6rem 1.4rem;
+  border-radius: 7px;
+  font-size: .93rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background .15s, transform .1s;
+}
+
+button[type="submit"]:hover { background: #e68900; }
+button[type="submit"]:active { transform: scale(.97); }
+button[type="submit"]:disabled { opacity: .6; cursor: not-allowed; }
+
+/* ── Alerts ───────────────────────────────────────────────────────────────── */
+.alert { padding: .6rem .9rem; border-radius: 7px; font-size: .85rem; margin-top: .5rem; }
+.alert-error { background: #fff5f5; color: #c53030; border: 1px solid #feb2b2; }
+.hidden { display: none !important; }
+
+/* ── Task list header ─────────────────────────────────────────────────────── */
+.tasks-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.task-stats { display: flex; gap: .4rem; }
+.stat-badge { padding: .2rem .65rem; border-radius: 12px; font-size: .72rem; font-weight: 600; }
+.stat-badge.pending { background: #ebf8ff; color: #2b6cb0; }
+.stat-badge.done { background: #f0fff4; color: #276749; }
+
+/* ── Task list ────────────────────────────────────────────────────────────── */
+#taskList { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: .8rem .9rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  transition: border-color .15s, background .15s;
+}
+
+.task-item:hover { border-color: #bee3f8; background: #f7fafc; }
+.task-item.completed { opacity: .6; background: #f7fafc; }
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #48bb78;
+  flex-shrink: 0;
+}
+
+.task-body { flex: 1; min-width: 0; }
+.task-title { font-weight: 600; font-size: .93rem; word-break: break-word; }
+.task-item.completed .task-title { text-decoration: line-through; }
+.task-desc { color: #718096; font-size: .82rem; margin-top: .2rem; word-break: break-word; }
+.task-meta { color: #a0aec0; font-size: .72rem; margin-top: .3rem; }
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: .2rem .3rem;
+  border-radius: 5px;
+  font-size: .9rem;
+  transition: color .15s, background .15s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover { color: #e53e3e; background: #fff5f5; }
+
+/* ── Empty & loading states ───────────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: 2rem;
+  color: #a0aec0;
+  font-size: .9rem;
+}
+
+.empty-state span { font-size: 2.5rem; }
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+footer {
+  background: #232f3e;
+  color: #a0aec0;
+  padding: .85rem 0;
+  text-align: center;
+}
+
+footer a { color: #81b4ff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .arch-banner { gap: .3rem; padding: .6rem .8rem; }
+  .arch-arrow { display: none; }
+  .card { padding: 1rem; }
+}

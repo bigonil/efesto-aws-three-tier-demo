@@ -1,0 +1,19 @@
+# Copy this file to terraform.tfvars and adjust values
+aws_region  = "eu-west-1"
+aws_profile = "lb-aws-admin"
+
+project_name = "threetier"
+environment  = "demo"
+
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["eu-west-1a", "eu-west-1b"]
+
+db_name     = "taskdb"
+db_username = "taskadmin"
+
+backend_cpu           = 256
+backend_memory        = 512
+backend_desired_count = 1
+
+# Leave empty on first apply — set this after running scripts/build-and-push.ps1
+# backend_image = "123456789.dkr.ecr.eu-west-1.amazonaws.com/threetier-demo-backend:latest"
