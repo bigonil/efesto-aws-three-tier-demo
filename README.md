@@ -13,6 +13,10 @@ CloudFront (CDN)
                                     RDS PostgreSQL
 ```
 
+## Architecture Diagram
+
+![Efesto AWS Three-Tier Architecture](efesto-architecture.png)
+
 ## Prerequisites
 
 | Tool | Version | Install |
